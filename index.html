@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Arithmetic Reveal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container { max-width: 800px; width: 100%; }
+        
+        .row {
+            display: flex;
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            align-items: stretch;
+        }
+
+        .question {
+            flex: 2;
+            padding: 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            background: #fff;
+            border-right: 2px solid #f0f2f5;
+        }
+
+        /* The Box on the Right */
+        .answer-box {
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            background-color: #3498db; /* The "Hidden" color */
+            color: transparent; /* Hide text initially */
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .answer-box::before {
+            content: "CLICK TO REVEAL";
+            color: white;
+            font-size: 0.8rem;
+            position: absolute;
+        }
+
+        /* Revealed State */
+        .answer-box.revealed {
+            background-color: #e8f8f5;
+            color: #27ae60;
+        }
+
+        .answer-box.revealed::before {
+            display: none; /* Remove "Click to Reveal" text */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Processing Arithmetic Exercise</h1>
+    <br />
+    <p> </p>
+
+    <div class="container">
+        <div class="row">
+            <div class="question">int i = 1 / 2 + 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                2
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">int i = 3 + 3 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                4
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">int i = 5 / 2 * 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                6
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">int i = 3 / 3 * 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="question">int i = 3.0 / 3 * 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                Error!
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">float f = 1 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.0
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">float f = 1 / 2.0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.5
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">float f = 1.0 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.5
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">float f = 1 / 2 * 2.0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.0
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="question">float f = 3.0 * 1 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                1.5
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
