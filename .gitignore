@@ -10,6 +10,9 @@
 /application.linux64/
 /application.macosx/
 
+# Processing autosaves
+*.autosave
+
 # Java class files
 *.class
 
