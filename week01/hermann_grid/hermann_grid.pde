@@ -1,5 +1,5 @@
 void setup(){
-  size(885, 525,P2D);
+  size(885, 525);
   background(125);
 
   // The black squares
