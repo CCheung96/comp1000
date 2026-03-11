@@ -6,11 +6,23 @@
 
 color beige = color(180, 175, 160);  // Pallas cat grey-beige
 color cream = color(250, 245, 225);  // Creamy White
-float xPos = 300;
-float yPos = 400;
-float velocity = 1;
+// Position of the manul
+float xPos;
+float yPos;
+float ground;
+// Some dimensions for the manul
+float manulWidth = 360;
+// Velocity variables
+float xSpeed = 1;
+int xDir = 1;
+float jumpV = 0;
+float gravity = 0.5;
+
 void setup() {
-  size(600, 600);
+  size(800, 600);
+  xPos = width/2;
+  yPos = height * 2/3;
+  ground = yPos;
 }
 
 void draw() {
@@ -22,14 +34,14 @@ void draw() {
   //  circle(random(width), random(height), 5);
   //}
   
-  
+  /* Drawing the Manul */
   // Base Layer
   noStroke();
   fill(cream); 
   arc(xPos - 66, yPos - 240, 100, 140, PI-PI/2, PI, CHORD);
   arc(xPos + 66, yPos - 240, 100, 140, 0, PI/2, CHORD);
   fill(beige); 
-  ellipse(xPos, yPos, 360, 360);   // THE BODY IS ROUND!
+  ellipse(xPos, yPos, manulWidth, manulWidth);   // THE BODY IS ROUND!
   ellipse(xPos, yPos - 150, 250, 200);  // Head
   ellipse(xPos - 20, yPos + 140, 240, 80); // Tail
   fill(180, 175, 160); // Pallas cat grey-beige
@@ -51,7 +63,7 @@ void draw() {
   // Nose
   //stroke(0);
   fill(180, 175, 160); // Pallas cat grey-beige
-  triangle(xPos, 214, xPos - 28, 252, xPos + 28, 252);
+  triangle(xPos, yPos - 186, xPos - 28,yPos - 148, xPos + 28, yPos - 148);
   fill(219, 145, 177);
   arc(xPos, yPos - 148, 24, 15, PI, TWO_PI);
   triangle(xPos - 7, yPos - 148, xPos + 7, yPos - 148, xPos, yPos - 143);
@@ -86,7 +98,6 @@ void draw() {
   //fill(255);
   //circle(300 - 31, 217, 1);
   
-  
   stroke(74, 52, 19);  // Dark Brown Markings
   noFill();
   arc(xPos - 35, yPos - 190, 30, 27, PI, TWO_PI - PI/3); // Left Brow
@@ -101,11 +112,40 @@ void draw() {
   arc(xPos + 30, yPos + 140, 60, 40, PI - QUARTER_PI, TWO_PI + QUARTER_PI, CHORD);
   
   // To move the manul
-  xPos = xPos + velocity;
-  //yPos = yPos + velocity;
+  xPos = xPos + xSpeed * xDir;
+  yPos = yPos + jumpV;
+  //xPos = (xPos + xSpeed) % width; // manul portals to the left
+
+  /* Velocity Modifiers */
+  xSpeed = 1 + 5 * abs(xPos - width/2) / width;
+  //if (xPos > width/4 && xPos < width * 3/4){
+  //  xSpeed  = 5;
+  //} else {
+  //  xSpeed = 1;
+  //}
   
+  if (yPos >= ground) {
+    // Stop moving when landing
+    yPos = ground;
+    jumpV = 0; 
+  } else {
+    // Gravity changes jump velocity
+    jumpV += gravity;
+  }
+  
+  //// Change direction when manul reaches egde of screen
+  //if (xPos < 0 || xPos > width){
+  //  xDir = -xDir;
+  //}
+  
+  // Manul bounces off edge of screen
+  if (xPos < manulWidth/2 || xPos > width - manulWidth/2){
+    xDir = -xDir;
+  }
 }
 
-void keyReleased(){
-  velocity = -velocity;
+void keyPressed(){
+  if (yPos == ground) {
+    jumpV = -7; 
+  }
 }

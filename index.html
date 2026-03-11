@@ -33,6 +33,7 @@
             color: #2c3e50;
             background: #fff;
             border-right: 2px solid #f0f2f5;
+            white-space: pre-line; /* honour line breaks*/
         }
 
         /* The Box on the Right */
@@ -72,11 +73,51 @@
 </head>
 <body>
 
-    <h1>Processing Arithmetic Exercise</h1>
+    <h1>Processing Arithmetic Exercises</h1>
     <br />
     <p> </p>
 
     <div class="container">
+        <div class="row">
+            <div class="question">int i = 1 + 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                3
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 1 - 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                -1
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 1 * 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                2
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 1 + 2 * 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                7
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = (1 + 2) * 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                9
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 1 / 0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">Error! Arithmetic Exception</div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 1 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0
+            </div>
+        </div>
         <div class="row">
             <div class="question">int i = 1 / 2 + 2;</div>
             <div class="answer-box" onclick="this.classList.toggle('revealed')">
@@ -99,19 +140,24 @@
         </div>
 
         <div class="row">
-            <div class="question">int i = 3 / 3 * 2;</div>
+            <div class="question">int i = 2 / 3 * 3;</div>
             <div class="answer-box" onclick="this.classList.toggle('revealed')">
                 0
             </div>
         </div>
         
         <div class="row">
-            <div class="question">int i = 3.0 / 3 * 2;</div>
+            <div class="question">int i = 3.0 / 3;</div>
             <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                Error!
+                Error! Type Mismatch
             </div>
         </div>
-
+        <div class="row">
+            <div class="question">float f = 3 / 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                1.0
+            </div>
+        </div>
         <div class="row">
             <div class="question">float f = 1 / 2;</div>
             <div class="answer-box" onclick="this.classList.toggle('revealed')">
@@ -146,6 +192,57 @@
                 1.5
             </div>
         </div>
+        <div class="row">
+            <div class="question">float f = 2.0 + 3 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">3.0</div>
+        </div>
+        <div class="row">
+            <div class="question">float f = 2.0 + 3 / 2.0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">3.5</div>
+        </div>
+        <div class="row">
+            <div class="question">float f = (2.0 + 3) / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">2.5</div>
+        </div>
+         <div class="row">
+            <div class="question">float f = 3 / 2 / 2;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.0
+            </div>
+        </div>       
+        <div class="row">
+            <div class="question">
+                float f = 3 / 2;
+                f = f / 2;
+            </div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                0.5
+            </div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 10 % 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">1</div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 15 % 0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">Error! Arithmetic Exception</div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 15 % 3;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">0</div>
+        </div>
+        <div class="row">
+            <div class="question">int i = 15 % 3.0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">Error! Type Mismatch</div>
+        </div>
+        <div class="row">
+            <div class="question">float i = 15 % 3.0;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">0.0</div>
+        </div>   
+        <div class="row">
+            <div class="question">float i = 15 % 3.5;</div>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">1.0</div>
+        </div>  
     </div>
 
 </body>

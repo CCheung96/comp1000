@@ -36,3 +36,10 @@ bin/
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Processing Folders
+examples/
+libraries/
+modes/
+templates/
+tools/
